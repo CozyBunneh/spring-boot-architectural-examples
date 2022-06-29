@@ -1,29 +1,44 @@
-# README #
+# Multi module project setup guide
 
-This README would normally document whatever steps are necessary to get your application up and running.
+https://www.baeldung.com/maven-multi-module
 
-### What is this repository for? ###
+## Create parent project
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+mvn archetype:generate -DgroupId=com.example -DartifactId=<project-name>
+mvn archetype:generate -DgroupId=com.postnord -DartifactId=<project-name>
 
-### How do I get set up? ###
+## Create sub projects
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Do these steps inside of the parent project folder.
 
-### Contribution guidelines ###
+### Api
 
-* Writing tests
-* Code review
-* Other guidelines
+mvn archetype:generate -DgroupId=com.example.api -DartifactId=api
+mvn archetype:generate -DgroupId=com.postnord.api -DartifactId=api
 
-### Who do I talk to? ###
+### Domain
 
-* Repo owner or admin
-* Other community or team contact
+mvn archetype:generate -DgroupId=com.example.domain -DartifactId=domain
+mvn archetype:generate -DgroupId=com.postnord.domain -DartifactId=domain
+
+### Infrastructure Persistence
+
+mvn archetype:generate -DgroupId=com.example.infrastructure.persistence -DartifactId=infrastructure.persistence
+mvn archetype:generate -DgroupId=com.postnord.infrastructure.persistence -DartifactId=infrastructure.persistence
+
+## Build it!
+
+`mvn package`
+
+## Run
+
+`mvn spring-boot:run`
+
+## Swagger
+
+http://localhost:8080/v3/api-docs/
+http://localhost:8080/swagger-ui/index.html
+
+## PipelinR
+
+https://github.com/sizovs/PipelinR
