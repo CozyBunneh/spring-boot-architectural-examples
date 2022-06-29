@@ -1,13 +1,12 @@
 package com.example.demo.domain.user.abstractions;
 
-import an.awesome.pipelinr.Voidy;
 import com.example.demo.domain.user.dtos.UserDto;
 import java.util.List;
 
 public interface IUserRepository {
-  public Voidy createUser(UserDto user);
+  public void createUser(UserDto user);
 
-  public Voidy deleteUser(String id);
+  public void deleteUser(String id);
 
   public List<UserDto> getUsers();
 
@@ -15,5 +14,5 @@ public interface IUserRepository {
 
   public List<UserDto> getUsersByRole(int role);
 
-  public Voidy updateUser(UserDto user);
+  public void updateUser(UserDto user);
 }

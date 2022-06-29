@@ -1,55 +1,95 @@
 package com.example.demo.infrastructure.persistence.user;
 
-import com.example.demo.domain.user.IUserRepository;
-import com.example.demo.domain.user.UserDto;
+import com.example.demo.domain.user.abstractions.IUserRepository;
+import com.example.demo.domain.user.dtos.UserDto;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service("userRepository")
 public class UserRepository implements IUserRepository {
 
-  private List<UserEntity> users = new ArrayList<>();
+  private List<UserEntity> users = Collections.synchronizedList(
+    new ArrayList<>()
+  );
 
   public UserRepository() {
     users.add(
-      new UserEntity(1, "TechGeekNext-User1", "ADMIN", "user1@test.com")
+      new UserEntity(
+        UUID.randomUUID().toString(),
+        "TechGeekNext-User1",
+        3,
+        "user1@test.com"
+      )
     );
     users.add(
-      new UserEntity(2, "TechGeekNext-User2", "SUPERVISOR", "user2@test.com")
+      new UserEntity(
+        UUID.randomUUID().toString(),
+        "TechGeekNext-User2",
+        2,
+        "user2@test.com"
+      )
     );
     users.add(
-      new UserEntity(3, "TechGeekNext-User3", "USER", "user3@test.com")
+      new UserEntity(
+        UUID.randomUUID().toString(),
+        "TechGeekNext-User3",
+        1,
+        "user3@test.com"
+      )
     );
     users.add(
-      new UserEntity(4, "TechGeekNext-User4", "USER", "user4@test.com")
+      new UserEntity(
+        UUID.randomUUID().toString(),
+        "TechGeekNext-User4",
+        1,
+        "user4@test.com"
+      )
     );
   }
 
   @Override
-  public List<UserEntity> getUsers() {
+  public void createUser(UserDto user) {
+    this.users.add(UserEntity.fromDto(user));
+  }
+
+  @Override
+  public void deleteUser(String id) {
+    users.removeIf(x -> x.id().equals(id));
+  }
+
+  @Override
+  public List<UserDto> getUsers() {
     return UserEntity.toDtos(users);
   }
 
   @Override
-  public UserEntity getUserById(int id) {
+  public UserDto getUserById(String id) {
     return UserEntity.toDto(
       users
         .stream()
-        .filter(x -> x.id() == (id))
+        .filter(x -> x.id().equals(id))
         .collect(Collectors.toList())
         .get(0)
     );
   }
 
   @Override
-  public List<UserEntity> getUsersByRole(String role) {
+  public List<UserDto> getUsersByRole(int role) {
     return UserEntity.toDtos(
-      users
-        .stream()
-        .filter(x -> x.role().equalsIgnoreCase(role))
-        .collect(Collectors.toList())
+      users.stream().filter(x -> x.role() == role).collect(Collectors.toList())
     );
+  }
+
+  @Override
+  public void updateUser(UserDto user) {
+    users
+      .stream()
+      .filter(x -> x.id().equals(user.id()))
+      .findFirst()
+      .ifPresent(userToUpdate -> userToUpdate = UserEntity.fromDto(user));
   }
 }

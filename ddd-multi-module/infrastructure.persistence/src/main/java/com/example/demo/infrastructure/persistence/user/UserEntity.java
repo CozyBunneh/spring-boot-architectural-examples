@@ -3,14 +3,20 @@ package com.example.demo.infrastructure.persistence.user;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.demo.domain.user.UserDto;
+import com.example.demo.domain.user.dtos.UserDto;
+import com.example.demo.domain.user.entities.UserRole;
 
-public record UserEntity(int id, String content, String role, String email) {
+public record UserEntity(String id, String name, int role, String email) {
     public static List<UserDto> toDtos(List<UserEntity> entities) {
         return entities.stream().map(UserEntity::toDto).collect(Collectors.toList());
     }
 
     public static UserDto toDto(UserEntity entity) {
-        return new UserDto(entity.id, entity.content, entity.role, entity.email);
+        var userRoleDto = UserRole.fromId(entity.role()).toDto();
+        return new UserDto(entity.id(), entity.name(), userRoleDto, entity.email());
+    }
+
+    public static UserEntity fromDto(UserDto dto) {
+        return new UserEntity(dto.id(), dto.name(), dto.role().id(), dto.email());
     }
 }

@@ -20,8 +20,8 @@ public class DeleteUserCommandHandler
 
   @Override
   public Voidy handle(DeleteUserCommand command) {
-    var userToUpdate = userRepository.getUserById(command.id());
-    if (userToUpdate == null) {
+    var userToDelete = userRepository.getUserById(command.id());
+    if (userToDelete == null) {
       throw new NotFoundException(USER_TO_REMOVE_COULD_NOT_BE_FOUND);
     }
 

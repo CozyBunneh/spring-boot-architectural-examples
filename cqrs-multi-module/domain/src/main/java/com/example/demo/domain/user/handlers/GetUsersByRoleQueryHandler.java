@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetUserByRoleQueryHandler
+public class GetUsersByRoleQueryHandler
   implements Command.Handler<GetUsersByRoleQuery, List<UserDto>> {
 
   @Autowired
@@ -17,6 +17,6 @@ public class GetUserByRoleQueryHandler
 
   @Override
   public List<UserDto> handle(GetUsersByRoleQuery query) {
-    return this.userRepository.getUserByRole(query.role());
+    return this.userRepository.getUsersByRole(query.role());
   }
 }

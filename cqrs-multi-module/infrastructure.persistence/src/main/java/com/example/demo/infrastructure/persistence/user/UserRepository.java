@@ -81,7 +81,7 @@ public class UserRepository implements IUserRepository {
   }
 
   @Override
-  public List<UserDto> getUserByRole(int role) {
+  public List<UserDto> getUsersByRole(int role) {
     return UserEntity.toDtos(
       users.stream().filter(x -> x.role() == role).collect(Collectors.toList())
     );
