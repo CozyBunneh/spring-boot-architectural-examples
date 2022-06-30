@@ -3,7 +3,7 @@ package com.example.demo.domain.user.handlers;
 import an.awesome.pipelinr.Command;
 import an.awesome.pipelinr.Voidy;
 import com.example.demo.domain.common.exceptions.NotFoundException;
-import com.example.demo.domain.user.abstractions.IUserRepository;
+import com.example.demo.domain.user.abstractions.UserRepository;
 import com.example.demo.domain.user.commands.DeleteUserCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ public class DeleteUserCommandHandler
     "User to remove could not be found";
 
   @Autowired
-  private IUserRepository userRepository;
+  private UserRepository userRepository;
 
   @Override
   public Voidy handle(DeleteUserCommand command) {

@@ -1,8 +1,8 @@
 package com.example.demo.domain.user;
 
 import com.example.demo.domain.common.exceptions.NotFoundException;
-import com.example.demo.domain.user.abstractions.IUserRepository;
-import com.example.demo.domain.user.abstractions.IUserService;
+import com.example.demo.domain.user.abstractions.UserRepository;
+import com.example.demo.domain.user.abstractions.UserService;
 import com.example.demo.domain.user.dtos.UserDto;
 import com.example.demo.domain.user.entities.User;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("userService")
-public class UserService implements IUserService {
+public class UserServiceImpl implements UserService {
 
   private static final String USER_TO_REMOVE_COULD_NOT_BE_FOUND =
     "User to remove could not be found";
@@ -18,7 +18,7 @@ public class UserService implements IUserService {
     "User to update was not found";
 
   @Autowired
-  private IUserRepository userRepository;
+  private UserRepository userRepository;
 
   @Override
   public void createUser(UserDto dto) {

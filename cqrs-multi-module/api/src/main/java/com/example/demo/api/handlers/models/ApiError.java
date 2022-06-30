@@ -14,7 +14,7 @@ public record ApiError(
 
   String message,
   String debugMessage,
-  List<IApiSubError> subErrors
+  List<ApiSubError> subErrors
 ) {
   public ApiError(HttpStatus status) {
     this(status, LocalDateTime.now(), "", "", new ArrayList<>());

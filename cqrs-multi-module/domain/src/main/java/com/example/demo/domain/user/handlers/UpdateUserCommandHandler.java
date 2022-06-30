@@ -3,7 +3,7 @@ package com.example.demo.domain.user.handlers;
 import an.awesome.pipelinr.Command;
 import an.awesome.pipelinr.Voidy;
 import com.example.demo.domain.common.exceptions.NotFoundException;
-import com.example.demo.domain.user.abstractions.IUserRepository;
+import com.example.demo.domain.user.abstractions.UserRepository;
 import com.example.demo.domain.user.commands.UpdateUserCommand;
 import com.example.demo.domain.user.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UpdateUserCommandHandler
     "User to update was not found";
 
   @Autowired
-  private IUserRepository userRepository;
+  private UserRepository userRepository;
 
   @Override
   public Voidy handle(UpdateUserCommand command) {

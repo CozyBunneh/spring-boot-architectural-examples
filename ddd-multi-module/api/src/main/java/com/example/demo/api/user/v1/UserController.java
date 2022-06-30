@@ -2,7 +2,7 @@ package com.example.demo.api.user.v1;
 
 import com.example.demo.api.user.v1.models.CreateUserV1;
 import com.example.demo.api.user.v1.models.UserV1;
-import com.example.demo.domain.user.abstractions.IUserService;
+import com.example.demo.domain.user.abstractions.UserService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class UserController {
   private static final String USER_ROLE_ENDPOINT = "/role/{role}";
 
   @Autowired
-  private IUserService userService;
+  private UserService userService;
 
   @PutMapping(value = USER_ENDPOINT, consumes = JSON)
   public void createUser(@RequestBody CreateUserV1 user) {

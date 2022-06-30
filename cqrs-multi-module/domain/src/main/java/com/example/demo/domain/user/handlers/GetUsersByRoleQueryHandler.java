@@ -1,7 +1,7 @@
 package com.example.demo.domain.user.handlers;
 
 import an.awesome.pipelinr.Command;
-import com.example.demo.domain.user.abstractions.IUserRepository;
+import com.example.demo.domain.user.abstractions.UserRepository;
 import com.example.demo.domain.user.dtos.UserDto;
 import com.example.demo.domain.user.queries.GetUsersByRoleQuery;
 import java.util.List;
@@ -13,7 +13,7 @@ public class GetUsersByRoleQueryHandler
   implements Command.Handler<GetUsersByRoleQuery, List<UserDto>> {
 
   @Autowired
-  private IUserRepository userRepository;
+  private UserRepository userRepository;
 
   @Override
   public List<UserDto> handle(GetUsersByRoleQuery query) {

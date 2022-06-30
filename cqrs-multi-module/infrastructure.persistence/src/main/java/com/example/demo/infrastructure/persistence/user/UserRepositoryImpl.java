@@ -1,6 +1,7 @@
 package com.example.demo.infrastructure.persistence.user;
 
-import com.example.demo.domain.user.abstractions.IUserRepository;
+import an.awesome.pipelinr.Voidy;
+import com.example.demo.domain.user.abstractions.UserRepository;
 import com.example.demo.domain.user.dtos.UserDto;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,13 +11,13 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service("userRepository")
-public class UserRepository implements IUserRepository {
+public class UserRepositoryImpl implements UserRepository {
 
   private List<UserEntity> users = Collections.synchronizedList(
     new ArrayList<>()
   );
 
-  public UserRepository() {
+  public UserRepositoryImpl() {
     users.add(
       new UserEntity(
         UUID.randomUUID().toString(),
@@ -52,13 +53,15 @@ public class UserRepository implements IUserRepository {
   }
 
   @Override
-  public void createUser(UserDto user) {
+  public Voidy createUser(UserDto user) {
     this.users.add(UserEntity.fromDto(user));
+    return new Voidy();
   }
 
   @Override
-  public void deleteUser(String id) {
+  public Voidy deleteUser(String id) {
     users.removeIf(x -> x.id().equals(id));
+    return new Voidy();
   }
 
   @Override
@@ -85,11 +88,12 @@ public class UserRepository implements IUserRepository {
   }
 
   @Override
-  public void updateUser(UserDto user) {
+  public Voidy updateUser(UserDto user) {
     users
       .stream()
       .filter(x -> x.id().equals(user.id()))
       .findFirst()
       .ifPresent(userToUpdate -> userToUpdate = UserEntity.fromDto(user));
+    return new Voidy();
   }
 }

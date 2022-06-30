@@ -5,4 +5,4 @@ public record ApiValidationError(
     String field,
     Object rejectedValue,
     String message
-) implements IApiSubError {}
+) implements ApiSubError {}
