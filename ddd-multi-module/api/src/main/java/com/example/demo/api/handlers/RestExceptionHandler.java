@@ -1,6 +1,6 @@
 package com.example.demo.api.handlers;
 
-import com.example.demo.api.handlers.models.ApiError;
+import com.example.demo.api.handlers.contracts.ApiError;
 import com.example.demo.domain.common.exceptions.NotFoundException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

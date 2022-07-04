@@ -1,7 +1,7 @@
 package com.example.demo.api.user.v1;
 
-import com.example.demo.api.user.v1.models.CreateUserV1;
-import com.example.demo.api.user.v1.models.UserV1;
+import com.example.demo.api.user.v1.contracts.CreateUserV1;
+import com.example.demo.api.user.v1.contracts.UserV1;
 import com.example.demo.domain.user.abstractions.UserService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;

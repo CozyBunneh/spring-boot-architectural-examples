@@ -1,4 +1,4 @@
-package com.example.demo.api.handlers.models;
+package com.example.demo.api.handlers.contracts;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;

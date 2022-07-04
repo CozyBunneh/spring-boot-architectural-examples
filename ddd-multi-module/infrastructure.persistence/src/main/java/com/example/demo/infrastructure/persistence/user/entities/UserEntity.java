@@ -1,10 +1,10 @@
-package com.example.demo.infrastructure.persistence.user;
+package com.example.demo.infrastructure.persistence.user.entities;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.example.demo.domain.user.dtos.UserDto;
-import com.example.demo.domain.user.entities.UserRole;
+import com.example.demo.domain.user.models.UserRole;
 
 public record UserEntity(String id, String name, int role, String email) {
     public static List<UserDto> toDtos(List<UserEntity> entities) {

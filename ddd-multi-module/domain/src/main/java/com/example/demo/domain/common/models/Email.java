@@ -1,4 +1,4 @@
-package com.example.demo.domain.common.entities;
+package com.example.demo.domain.common.models;
 
 public record Email(String email) {
     private static final String AT = "@";
