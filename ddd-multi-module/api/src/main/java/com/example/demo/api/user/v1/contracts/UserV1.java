@@ -1,4 +1,4 @@
-package com.example.demo.api.user.v1.models;
+package com.example.demo.api.user.v1.contracts;
 
 import java.util.List;
 import java.util.stream.Collectors;
