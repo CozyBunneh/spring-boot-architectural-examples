@@ -1,4 +1,4 @@
-package com.example.demo.domain.user.entities;
+package com.example.demo.domain.user.models;
 
 import com.example.demo.domain.user.dtos.UserRoleDto;
 

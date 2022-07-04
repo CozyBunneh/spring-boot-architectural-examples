@@ -1,4 +1,4 @@
-package com.example.demo.domain.common.entities;
+package com.example.demo.domain.common.models;
 
 import java.util.UUID;
 

@@ -1,9 +1,9 @@
-package com.example.demo.domain.user.entities;
+package com.example.demo.domain.user.models;
 
 import java.util.UUID;
 
-import com.example.demo.domain.common.entities.Email;
-import com.example.demo.domain.common.entities.GlobalId;
+import com.example.demo.domain.common.models.Email;
+import com.example.demo.domain.common.models.GlobalId;
 import com.example.demo.domain.user.dtos.UserDto;
 
 public record User(GlobalId id, String name, UserRole role, Email email) {

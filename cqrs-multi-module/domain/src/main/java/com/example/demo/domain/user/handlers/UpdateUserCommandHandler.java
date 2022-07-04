@@ -5,7 +5,7 @@ import an.awesome.pipelinr.Voidy;
 import com.example.demo.domain.common.exceptions.NotFoundException;
 import com.example.demo.domain.user.abstractions.UserRepository;
 import com.example.demo.domain.user.commands.UpdateUserCommand;
-import com.example.demo.domain.user.entities.User;
+import com.example.demo.domain.user.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,9 @@
 package com.example.demo.api.user.v1;
 
 import an.awesome.pipelinr.Pipeline;
-import com.example.demo.api.user.v1.models.CreateUserV1;
-import com.example.demo.api.user.v1.models.UserV1;
+
+import com.example.demo.api.user.v1.contracts.CreateUserV1;
+import com.example.demo.api.user.v1.contracts.UserV1;
 import com.example.demo.domain.user.commands.CreateUserCommand;
 import com.example.demo.domain.user.commands.DeleteUserCommand;
 import com.example.demo.domain.user.commands.UpdateUserCommand;

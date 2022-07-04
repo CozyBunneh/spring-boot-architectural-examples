@@ -3,6 +3,7 @@ package com.example.demo.infrastructure.persistence.user;
 import an.awesome.pipelinr.Voidy;
 import com.example.demo.domain.user.abstractions.UserRepository;
 import com.example.demo.domain.user.dtos.UserDto;
+import com.example.demo.infrastructure.persistence.user.entities.UserEntity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
